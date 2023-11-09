@@ -6,8 +6,9 @@ import {
   increment,
   decrement,
   incrementByAmount,
-} from '@/redux/slices/counter.slice';
+} from '@/redux/features/counter.slice';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type Props = {};
 
