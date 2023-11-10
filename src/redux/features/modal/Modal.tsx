@@ -9,60 +9,49 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAppSelector, useAppDispatch } from '@/hooks/useAppState';
-import { Close } from '@radix-ui/react-dialog';
-import { closeModal } from './modal.slice';
+import { closeModal } from '@/redux/features/modal/modal.slice';
 
 interface IModalProps {
-  isOpen?: boolean;
-  onClose?: () => void;
-  onSubmit?: () => void;
   title?: string;
+  subTitle?: string;
   body?: React.ReactElement;
-  footer?: React.ReactElement;
-  actionLabel?: string;
-  disabled?: boolean;
-  secondaryAction?: () => void;
-  secondaryActionLabel?: string;
+  positiveAction?: () => void;
+  positiveLabel?: string;
+  negitiveAction?: () => void;
+  negitiveLabel?: string;
 }
 
 const Modal: React.FC<IModalProps> = ({
-  // isOpen,
-  // onClose,
-  onSubmit,
   title,
+  subTitle,
   body,
-  footer,
-  actionLabel,
-  disabled,
-  secondaryAction,
-  secondaryActionLabel,
+  positiveAction,
+  positiveLabel,
+  negitiveAction,
+  negitiveLabel,
 }) => {
   const { modalState } = useAppSelector((state) => state.modal);
   const dispatch = useAppDispatch();
   return (
-    <Dialog open={modalState}>
+    <Dialog open={modalState} onOpenChange={() => dispatch(closeModal())}>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you`re done.
-          </DialogDescription>
+          <DialogDescription>{subTitle}</DialogDescription>
         </DialogHeader>
         {body}
         <DialogFooter>
-          <Button
-            variant={'outline'}
-            onClick={() => {
-              dispatch(closeModal());
-            }}
-          >
-            Close
+          <Button variant={'outline'} onClick={negitiveAction}>
+            {positiveLabel}
           </Button>
-          <Button type='submit'>Save changes</Button>
+          <Button type='submit' onClick={positiveAction}>
+            {positiveLabel}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
