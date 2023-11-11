@@ -1,7 +1,7 @@
 'use client';
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useState, useCallback } from 'react';
 import Image from 'next/image';
-import { MessagesSquare, Bell, User2 } from 'lucide-react';
+import { MessagesSquare, Bell, User2, X, Menu } from 'lucide-react';
 import Link from 'next/link';
 
 type Props = {};
@@ -13,7 +13,7 @@ interface HoverableProps {
 
 const Hoverable = ({ children, path, underLine }: HoverableProps) => {
   return (
-    <li className='group cursor-pointer hover:text-blue-600 transition ease-in-out duration-200'>
+    <li className='group cursor-pointer hover:text-blue-600 transition ease-in-out duration-200 font-medium'>
       <Link href={path}>
         {children}
         {underLine && (
@@ -49,9 +49,15 @@ let rightLinks = [
 ];
 
 const Navbar = (props: Props) => {
+  const [toggleNavbar, setToggleNavbar] = useState<Boolean>(false);
+
+  const toggleNavbarFn = useCallback(() => {
+    setToggleNavbar(!toggleNavbar);
+  }, [toggleNavbar]);
+
   return (
-    <div className='flex flex-row p-4'>
-      <div className='flex-1'>
+    <div className='flex flex-row p-4 justify-between'>
+      <div className='md:flex-[0.7] lg:flex-1'>
         <Image
           src={'/images/twitter_header_photo_1.png'}
           alt='Logo'
@@ -59,8 +65,8 @@ const Navbar = (props: Props) => {
           height={100}
         />
       </div>
-      <div className='flex-1'>
-        <ul className='flex flex-row gap-3 '>
+      <div className='flex-1 lg:block hidden'>
+        <ul className='flex flex-row gap-3 items-center justify-center'>
           {middleLinks.map((link, index) => (
             <Hoverable path={link.path} key={index} underLine={link.underLine}>
               {link.label}
@@ -68,7 +74,7 @@ const Navbar = (props: Props) => {
           ))}
         </ul>
       </div>
-      <div className='flex-1'>
+      <div className='flex-1 lg:block hidden '>
         <ul className='flex flex-row justify-end gap-3 mr-4'>
           {rightLinks.map((link, index) => (
             <Hoverable key={index} path={link.path} underLine={link.underLine}>
@@ -76,6 +82,30 @@ const Navbar = (props: Props) => {
             </Hoverable>
           ))}
         </ul>
+      </div>
+
+      {/* mobile view */}
+      <div className='flex lg:hidden z-10' onClick={toggleNavbarFn}>
+        {toggleNavbar ? <X /> : <Menu />}
+      </div>
+      <div
+        className={`flex flex-col items-center justify-center lg:hidden absolute bg-red-600 h-screen w-[40%] top-0 ${
+          toggleNavbar ? 'right-0' : 'right-[-100%]'
+        } transition-all duration-200 ease-in-out`}
+      >
+        <div className='flex-1 flex items-center justify-center '>
+          <ul className='flex flex-col gap-3 items-center justify-center'>
+            {middleLinks.map((link, index) => (
+              <Hoverable
+                path={link.path}
+                key={index}
+                underLine={link.underLine}
+              >
+                {link.label}
+              </Hoverable>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
