@@ -47,7 +47,7 @@ const Modal: React.FC<IModalProps> = ({
         {body}
         <DialogFooter>
           <Button variant={'outline'} onClick={negitiveAction}>
-            {positiveLabel}
+            {negitiveLabel}
           </Button>
           <Button type='submit' onClick={positiveAction}>
             {positiveLabel}
