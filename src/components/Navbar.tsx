@@ -18,28 +18,28 @@ const Hoverable = ({ children, path }: HoverableProps) => {
   );
 };
 
-const Navbar = (props: Props) => {
-  let middleLinks = [
-    {
-      label: 'Find Job',
-      path: '/',
-    },
-    {
-      label: 'Company Review',
-      path: '/',
-    },
-    {
-      label: 'Salary Guide',
-      path: '/',
-    },
-  ];
-  let rightLinks = [
-    { icon: <MessagesSquare />, text: 'Messages', path: '/messages' },
-    { icon: <Bell />, text: 'Bell', path: '/bell' },
-    { icon: <User2 />, text: 'User', path: '/user' },
-    { text: 'Employers/Post Job', path: '/employers' },
-  ];
+let middleLinks = [
+  {
+    label: 'Find Job',
+    path: '/',
+  },
+  {
+    label: 'Company Review',
+    path: '/',
+  },
+  {
+    label: 'Salary Guide',
+    path: '/',
+  },
+];
+let rightLinks = [
+  { icon: <MessagesSquare />, text: 'Messages', path: '/' },
+  { icon: <Bell />, text: 'Bell', path: '/' },
+  { icon: <User2 />, text: 'User', path: '/' },
+  { text: 'Employers/Post Job', path: '/' },
+];
 
+const Navbar = (props: Props) => {
   return (
     <div className='flex flex-row p-4'>
       <div className='flex-1'>
