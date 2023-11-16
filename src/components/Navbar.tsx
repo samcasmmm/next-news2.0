@@ -82,7 +82,7 @@ const Navbar = (props: Props) => {
           />
         </div>
         <div className='flex-1 lg:block hidden'>
-          <ul className='flex flex-row gap-3 items-center justify-end'>
+          <ul className='flex flex-row gap-3 items-center justify-end px-4'>
             {navLinks.map((link, index) => (
               <Hoverable
                 path={link.path}
@@ -96,7 +96,7 @@ const Navbar = (props: Props) => {
         </div>
 
         {/* mobile view */}
-        <div className='flex lg:hidden z-10' onClick={toggleNavbarFn}>
+        <div className='flex lg:hidden z-10 px-4' onClick={toggleNavbarFn}>
           {toggleNavbar ? <X /> : <Menu />}
         </div>
         <div
