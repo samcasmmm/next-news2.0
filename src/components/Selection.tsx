@@ -21,14 +21,18 @@ type Props = {
 const Selection = ({ mainLabel, selectedLabel, data }: Props) => {
   return (
     <Select>
-      <SelectTrigger className='w-[180px]'>
+      <SelectTrigger className='w-[180px] focus:ring-0 focus:ring-offset-0'>
         <SelectValue placeholder={mainLabel} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>{selectedLabel}</SelectLabel>
           {data?.map((item, index) => (
-            <SelectItem key={index} value={item.value}>
+            <SelectItem
+              className='cursor-pointer'
+              key={index}
+              value={item.value}
+            >
               {item.label}
             </SelectItem>
           ))}
