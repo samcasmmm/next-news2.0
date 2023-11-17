@@ -19,20 +19,30 @@ type Props = {
   selectedLabel?: string;
   data: JobType[];
   searchable?: boolean;
+  OnChange?: (value: any) => void;
+  nameAttri: any;
+  valueAttri?: any;
 };
 
 const Selection = ({
   mainLabel,
+  nameAttri,
+  valueAttri,
   selectedLabel,
   data,
   searchable = false,
+  OnChange,
 }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const filteredData = data.filter((item) =>
     item.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
-    <Select>
+    <Select
+      onValueChange={(value) => OnChange && OnChange(value)}
+      name={nameAttri}
+      value={valueAttri}
+    >
       <SelectTrigger className='w-[180px] focus:ring-0 focus:ring-offset-0'>
         <SelectValue placeholder={mainLabel} />
       </SelectTrigger>
