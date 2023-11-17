@@ -71,7 +71,7 @@ const Navbar = (props: Props) => {
   );
 
   return (
-    <div className='flex flex-row items-center justify-between overflow-hidden'>
+    <div className='flex flex-row items-center justify-between overflow-hidden bg-white'>
       <div className='container flex flex-row p-4 items-center justify-between overflow-hidden'>
         <div className='md:flex-1 lg:flex-1'>
           <Image

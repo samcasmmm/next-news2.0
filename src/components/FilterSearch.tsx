@@ -36,7 +36,7 @@ const FilterSearch = (props: Props) => {
     <div className='container mt-4'>
       <div className='flex flex-row gap-2'>
         <Input
-          className='flex-1 focus-visible:ring-0 focus-visible:ring-offset-0'
+          className='flex-1 focus-visible:ring-0 focus-visible:ring-offset-0 '
           placeholder='Role'
           onChange={(e) => handleOnChanges('role', e.target.value)}
           value={jobSearchFilters.role}
