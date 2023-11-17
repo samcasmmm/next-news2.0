@@ -6,7 +6,7 @@ export const jobTypes = [
   { label: 'Contract', value: 'Contract' },
   { label: 'Temporary', value: 'Temporary' },
   { label: 'Internship', value: 'Internship' },
-  { label: 'Flexible Schedule', value: 'Flexible Schedule' },
+  { label: 'Flexible Schedule', value: 'FlexibleSchedule' },
 ];
 
 export const cities = [
@@ -89,4 +89,20 @@ export const cities = [
   { label: 'Ajmer, RJ', value: 'Ajmer' },
   { label: 'Akola, MH', value: 'Akola' },
   { label: 'KA - Gulbarga', value: 'Gulbarga' },
+];
+
+export const experience = [
+  { label: 'Fresher', value: 'Fresher' },
+  { label: 'Internship', value: 'Internship' },
+  { label: '6 Months', value: '6Months' },
+  { label: '1 Year', value: '1Year' },
+  { label: '2 Years', value: '2Years' },
+  { label: '3 Years', value: '3Years' },
+  { label: '4 Years', value: '4Years' },
+  { label: '5 Years', value: '5Years' },
+  { label: '6 Years', value: '6Years' },
+  { label: '7 Years', value: '7Years' },
+  { label: '8 Years', value: '8Years' },
+  { label: '9 Years', value: '9Years' },
+  { label: '10+ Years', value: '10Years' },
 ];
