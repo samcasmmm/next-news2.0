@@ -14,7 +14,12 @@ const FilterSearch = (props: Props) => {
           placeholder='Role'
         />
         <Selection data={jobTypes} mainLabel='Job Type' selectedLabel='Any' />
-        <Selection data={cities} mainLabel='Location' selectedLabel='Any' />
+        <Selection
+          data={cities}
+          mainLabel='Location'
+          selectedLabel='Any'
+          searchable
+        />
         <Selection
           data={experience}
           mainLabel='experience'

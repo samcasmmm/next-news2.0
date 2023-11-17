@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
 import {
   Select,
@@ -17,7 +18,7 @@ type Props = {
   mainLabel: string;
   selectedLabel?: string;
   data: JobType[];
-  searchable: boolean;
+  searchable?: boolean;
 };
 
 const Selection = ({
@@ -26,16 +27,33 @@ const Selection = ({
   data,
   searchable = false,
 }: Props) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((item) =>
+    item.label.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <Select>
       <SelectTrigger className='w-[180px] focus:ring-0 focus:ring-offset-0'>
         <SelectValue placeholder={mainLabel} />
       </SelectTrigger>
       <SelectContent>
-        {searchable && <Input />}
+        {searchable && (
+          <Input
+            className='mt-2'
+            placeholder='Find City'
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchTerm(e.target.value)
+            }
+          />
+        )}
         <SelectGroup>
-          <SelectLabel>{selectedLabel}</SelectLabel>
-          {data?.map((item, index) => (
+          <SelectLabel
+            className='cursor-pointer'
+            onClick={() => setSearchTerm('')}
+          >
+            {searchTerm != '' ? 'Clear' : selectedLabel}
+          </SelectLabel>
+          {filteredData?.map((item, index) => (
             <SelectItem
               className='cursor-pointer'
               key={index}
