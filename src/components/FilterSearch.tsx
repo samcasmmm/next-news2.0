@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Input, Button } from '@/components/';
 import Selection from './Selection';
 import { jobTypes, cities, experience } from '@/utils/Static.data';
+import { Search } from 'lucide-react';
 
 type Props = {};
 
@@ -36,12 +37,15 @@ const FilterSearch = (props: Props) => {
     <div className='container mt-4'>
       <div className='flex flex-row gap-2'>
         <Input
-          className='flex-1 focus-visible:ring-0 focus-visible:ring-offset-0 '
+          parentClassName='flex-1 '
+          className='focus-visible:ring-0 focus-visible:ring-offset-0 '
           placeholder='Role'
           onChange={(e) => handleOnChanges('role', e.target.value)}
           value={jobSearchFilters.role}
+          icon={<Search size={18} color='#20202060' />}
         />
         <Selection
+          className='flex-1'
           data={jobTypes}
           mainLabel='Job Type'
           selectedLabel='Any'
@@ -50,6 +54,7 @@ const FilterSearch = (props: Props) => {
           valueAttri={jobSearchFilters.jobType}
         />
         <Selection
+          className='flex-1'
           data={cities}
           mainLabel='Location'
           selectedLabel='Any'
@@ -59,6 +64,7 @@ const FilterSearch = (props: Props) => {
           valueAttri={jobSearchFilters.location}
         />
         <Selection
+          className='flex-1'
           data={experience}
           mainLabel='Experience'
           selectedLabel='Fresher'

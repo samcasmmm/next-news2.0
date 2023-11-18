@@ -36,17 +36,17 @@ const Hoverable = ({ children, path, underLine }: HoverableProps) => {
 let navLinks = [
   {
     label: 'Find Job',
-    path: '/',
+    path: '/find-job',
     underLine: true,
   },
   {
     label: 'Company Review',
-    path: '/',
+    path: '/review',
     underLine: true,
   },
   {
     label: 'Salary Guide',
-    path: '/',
+    path: '/salary-guide',
     underLine: true,
   },
 ];
