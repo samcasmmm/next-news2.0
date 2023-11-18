@@ -35,7 +35,7 @@ const FilterSearch = (props: Props) => {
 
   return (
     <div className='container mt-4'>
-      <div className='flex flex-row gap-2'>
+      <div className='flex flex-col sm:flex-row gap-2 flex-wrap'>
         <Input
           parentClassName='flex-1 '
           className='focus-visible:ring-0 focus-visible:ring-offset-0 '
@@ -45,7 +45,7 @@ const FilterSearch = (props: Props) => {
           icon={<Search size={18} color='#20202060' />}
         />
         <Selection
-          className='flex-1'
+          className='flex-1 w-full'
           data={jobTypes}
           mainLabel='Job Type'
           selectedLabel='Any'
@@ -54,7 +54,7 @@ const FilterSearch = (props: Props) => {
           valueAttri={jobSearchFilters.jobType}
         />
         <Selection
-          className='flex-1'
+          className='flex-1 w-full'
           data={cities}
           mainLabel='Location'
           selectedLabel='Any'
@@ -64,7 +64,7 @@ const FilterSearch = (props: Props) => {
           valueAttri={jobSearchFilters.location}
         />
         <Selection
-          className='flex-1'
+          className='flex-1 w-full'
           data={experience}
           mainLabel='Experience'
           selectedLabel='Fresher'
@@ -72,7 +72,7 @@ const FilterSearch = (props: Props) => {
           nameAttri={'experience'}
           valueAttri={jobSearchFilters.experience}
         />
-        <Button className='flex-1' onClick={handleSearch}>
+        <Button className='flex-1 w-full' onClick={handleSearch}>
           Search
         </Button>
       </div>
