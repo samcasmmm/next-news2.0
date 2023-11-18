@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/utils/classVariant';
 
 type JobType = { label: string; value: string };
 
@@ -19,21 +20,37 @@ type Props = {
   selectedLabel?: string;
   data: JobType[];
   searchable?: boolean;
+  OnChange?: (value: any) => void;
+  nameAttri: any;
+  valueAttri?: any;
+  className?: string;
 };
 
 const Selection = ({
   mainLabel,
+  nameAttri,
+  valueAttri,
   selectedLabel,
   data,
   searchable = false,
+  OnChange,
+  className,
 }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const filteredData = data.filter((item) =>
     item.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const containerClasses = cn(
+    'w-[180px] focus:ring-0 focus:ring-offset-0',
+    className
+  );
   return (
-    <Select>
-      <SelectTrigger className='w-[180px] focus:ring-0 focus:ring-offset-0'>
+    <Select
+      onValueChange={(value) => OnChange && OnChange(value)}
+      name={nameAttri}
+      value={valueAttri}
+    >
+      <SelectTrigger className={containerClasses}>
         <SelectValue placeholder={mainLabel} />
       </SelectTrigger>
       <SelectContent>
