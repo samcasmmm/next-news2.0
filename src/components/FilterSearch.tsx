@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, Button } from '@/components/';
 import Selection from './Selection';
 import { jobTypes, cities, experience } from '@/utils/Static.data';
@@ -20,6 +20,7 @@ const FilterSearch = (props: Props) => {
     location: '',
     experience: '',
   });
+  const [hideFilter, setHideFilter] = useState(true);
 
   const handleOnChanges = (name: string, value: string) => {
     setJobSearchFilters((prev) => ({
@@ -33,9 +34,34 @@ const FilterSearch = (props: Props) => {
     console.log(jobSearchFilters); // For now, log the filters to the console
   };
 
+  let dimension = {
+    width: window.screen.width,
+    height: window.screen.height,
+  };
+  useEffect(() => {
+    if (dimension.width <= 425) {
+      setHideFilter(false);
+    }
+
+    return () => {};
+  }, [dimension.width]);
+
   return (
-    <div className='container mt-4'>
-      <div className='flex flex-col sm:flex-row gap-2 flex-wrap'>
+    <div className='container mt-4 flex flex-col'>
+      {dimension.width <= 425 && (
+        <Button
+          variant={'link'}
+          className='cursor-pointer flex justify-end'
+          onClick={() => setHideFilter(!hideFilter)}
+        >
+          {hideFilter ? 'Show Filter' : 'Hide Filter'}
+        </Button>
+      )}
+      <div
+        className={`${
+          hideFilter ? 'flex' : 'hidden'
+        } flex-col sm:flex-row gap-2 flex-wrap`}
+      >
         <Input
           parentClassName='flex-1 '
           className='focus-visible:ring-0 focus-visible:ring-offset-0 '

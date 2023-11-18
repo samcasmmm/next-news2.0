@@ -14,7 +14,7 @@ const page = (props: Props) => {
   return (
     <main className='flex flex-col py-4 bg-white'>
       <div className='container'>
-        <div className='bg-blue-600 w-full h-40 rounded-lg md:flex flex-row hidden'>
+        <div className='bg-blue-600 w-full h-40 rounded-lg flex flex-row'>
           <div className='flex flex-col items-start justify-center sm:p-4 p-2 pl-6'>
             <p className='text-white font-bold sm:text-3xl text-xl'>
               Looking for a new opportunites?
