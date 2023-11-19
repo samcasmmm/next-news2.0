@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 type Props = {};
 
-const Home = (props: Props) => {
+const page = (props: Props) => {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
 
@@ -30,4 +30,4 @@ const Home = (props: Props) => {
   );
 };
 
-export default Home;
+export default page;
