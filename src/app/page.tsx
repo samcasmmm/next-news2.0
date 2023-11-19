@@ -30,8 +30,8 @@ const page = (props: Props) => {
         <div className='container flex flex-row gap-2 min-h-[60vh]'>
           <div className='flex flex-col flex-1 p-4 rounded-xl'>
             <p>Related Jobs</p>
-            <div className='flex flex-col gap-4'>
-              {Array.from({ length: 4 }).map((item, index) => (
+            <div className='flex flex-col gap-4 overflow-y-scroll max-h-[60vh] scroll-smooth  scrollbar-none'>
+              {Array.from({ length: 10 }).map((item, index) => (
                 <JobCard key={index} />
               ))}
             </div>
