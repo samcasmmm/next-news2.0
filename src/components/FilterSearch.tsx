@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Input, Button } from '@/components/';
 import Selection from './Selection';
@@ -21,6 +23,12 @@ const FilterSearch = (props: Props) => {
     experience: '',
   });
   const [hideFilter, setHideFilter] = useState(true);
+  const [dimension, setDimension] = useState<{ width: number; height: number }>(
+    {
+      width: 0,
+      height: 0,
+    }
+  );
 
   const handleOnChanges = (name: string, value: string) => {
     setJobSearchFilters((prev) => ({
@@ -34,21 +42,24 @@ const FilterSearch = (props: Props) => {
     console.log(jobSearchFilters); // For now, log the filters to the console
   };
 
-  let dimension = {
-    width: window.screen.width,
-    height: window.screen.height,
-  };
   useEffect(() => {
-    if (dimension.width <= 425) {
+    if (typeof window !== 'undefined') {
+      setDimension({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    if (dimension?.width >= 425) {
       setHideFilter(false);
     }
+    // console.log(dimension);
 
     return () => {};
   }, [dimension.width]);
 
   return (
     <div className='container mt-4 flex flex-col'>
-      {dimension.width <= 425 && (
+      {dimension.width >= 425 && (
         <Button
           variant={'link'}
           className='cursor-pointer flex justify-end'
