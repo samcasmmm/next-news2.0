@@ -5,6 +5,8 @@ import { Input, Button } from '@/components/';
 import Selection from './Selection';
 import { jobTypes, cities, experience } from '@/utils/Static.data';
 import { Search } from 'lucide-react';
+import { useAppDispatch, useAppSelector } from '@/hooks/useAppState';
+import { filterStateFn } from '@/redux/features/ui.slice';
 
 type Props = {};
 
@@ -29,6 +31,9 @@ const FilterSearch = (props: Props) => {
       height: 0,
     }
   );
+
+  const dispatch = useAppDispatch();
+  const UiState = useAppSelector((state) => state.uiState);
 
   const handleOnChanges = (name: string, value: string) => {
     setJobSearchFilters((prev) => ({
@@ -59,18 +64,9 @@ const FilterSearch = (props: Props) => {
 
   return (
     <div className='container mt-4 flex flex-col'>
-      {dimension.width >= 425 && (
-        <Button
-          variant={'link'}
-          className='cursor-pointer flex justify-end'
-          onClick={() => setHideFilter(!hideFilter)}
-        >
-          {hideFilter ? 'Show Filter' : 'Hide Filter'}
-        </Button>
-      )}
       <div
         className={`${
-          hideFilter ? 'flex' : 'hidden'
+          UiState.filterState ? 'flex' : 'hidden'
         } flex-col sm:flex-row gap-2 flex-wrap`}
       >
         <Input
