@@ -55,12 +55,12 @@ const FilterSearch = (props: Props) => {
       });
     }
     if (dimension?.width >= 425) {
-      setHideFilter(false);
+      dispatch(filterStateFn(false));
     }
     // console.log(dimension);
 
     return () => {};
-  }, [dimension.width]);
+  }, [dimension.width, dispatch]);
 
   return (
     <div className='container mt-4 flex flex-col'>
