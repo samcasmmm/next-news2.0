@@ -1,12 +1,15 @@
 'use client';
+
 import FilterSearch from '@/components/FilterSearch';
 import JobCard from '@/components/JobCard';
-import { useAppDispatch } from '@/hooks/useAppState';
+import { useAppDispatch, useAppSelector } from '@/hooks/useAppState';
+import { filterStateFn } from '@/redux/features/ui.slice';
 
 type Props = {};
 
 const page = (props: Props) => {
   const dispatch = useAppDispatch();
+  const UiState = useAppSelector((state) => state.uiState);
 
   return (
     <main className='w-full'>
@@ -29,7 +32,14 @@ const page = (props: Props) => {
       <div className='mt-5'>
         <div className='container flex flex-row gap-2 min-h-[60vh]'>
           <div className='flex flex-col flex-1 p-4 rounded-xl'>
-            <p>Related Jobs</p>
+            <div className='flex flex-row justify-between w-full bg-white'>
+              <p className='py-4 pl-4 my-2 rounded-xl font-bold'>
+                Related Jobs
+              </p>
+              <p className='py-4 pl-4 my-2 rounded-xl font-bold'>
+                {UiState?.filterState ? 'Show Filter' : 'Hide Filter'}
+              </p>
+            </div>
             <div className='flex flex-col gap-4 overflow-y-scroll max-h-[60vh] scroll-smooth  scrollbar-none'>
               {Array.from({ length: 10 }).map((item, index) => (
                 <JobCard key={index} />
@@ -37,7 +47,7 @@ const page = (props: Props) => {
             </div>
           </div>
           <div className='flex flex-col flex-1 bg-white p-4 rounded-xl'>
-            <p>Related Jobs</p>
+            <p className=''>Related Jobs</p>
             <div className='flex flex-col gap-4'></div>
           </div>
         </div>
