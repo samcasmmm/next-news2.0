@@ -7,6 +7,7 @@ import { jobTypes, cities, experience } from '@/utils/Static.data';
 import { Search } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/hooks/useAppState';
 import { filterStateFn } from '@/redux/features/ui.slice';
+import { motion } from 'framer-motion';
 
 type Props = {};
 
@@ -63,7 +64,7 @@ const FilterSearch = (props: Props) => {
   }, [dimension.width, dispatch]);
 
   return (
-    <div className='container mt-4 flex flex-col'>
+    <motion.div className='container mt-4 flex flex-col'>
       <div
         className={`${
           UiState.filterState ? 'flex' : 'hidden'
@@ -109,7 +110,7 @@ const FilterSearch = (props: Props) => {
           Search
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
