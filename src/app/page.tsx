@@ -42,7 +42,7 @@ const page = (props: Props) => {
                   dispatch(filterStateFn(!UiState?.filterState));
                 }}
               >
-                {UiState?.filterState ? 'Show Filter' : 'Hide Filter'}
+                {UiState?.filterState ? 'Hide Filter' : 'Show Filter'}
               </Button>
             </div>
             <div className='flex flex-col gap-4 overflow-y-scroll max-h-[60vh] scroll-smooth  scrollbar-none'>
