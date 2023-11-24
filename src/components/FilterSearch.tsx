@@ -64,11 +64,20 @@ const FilterSearch = (props: Props) => {
   }, [dimension.width, dispatch]);
 
   return (
-    <motion.div className='container mt-4 flex flex-col'>
+    <motion.div
+      className={`container mt-4 ${
+        UiState.filterState ? 'flex' : 'hidden'
+      } flex-col`}
+      animate={{
+        x: 0,
+        y: UiState.filterState ? 5 : -10,
+        scale: 1,
+        rotate: 0,
+      }}
+    >
       <div
-        className={`${
-          UiState.filterState ? 'flex' : 'hidden'
-        } flex-col sm:flex-row gap-2 flex-wrap`}
+        className={`flex
+        flex-col sm:flex-row gap-2 flex-wrap`}
       >
         <Input
           parentClassName='flex-1 '
