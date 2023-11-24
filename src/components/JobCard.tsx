@@ -1,11 +1,12 @@
 'use client';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 type Props = {};
 
 const JobCard = (props: Props) => {
   return (
-    <div className='w-full bg-white p-4 rounded-lg'>
+    <motion.div className='w-full bg-white p-4 rounded-lg'>
       <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-4'>
           <Image
@@ -35,7 +36,7 @@ const JobCard = (props: Props) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
