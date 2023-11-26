@@ -1,12 +1,28 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import React from 'react';
 
-type Props = {};
+type Props = {
+  indexNumber: number;
+  setjobIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+const technologies = [
+  'Html',
+  'CSS',
+  'JavaScript',
+  'NodeJS',
+  'ReactJS',
+  'MongoDB',
+  'ExpressJS',
+];
 
-const JobCard = (props: Props) => {
+const JobCard = ({ indexNumber, setjobIndex }: Props) => {
   return (
-    <motion.div className='w-full bg-white p-4 rounded-lg'>
+    <motion.div
+      className='w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer'
+      onClick={() => setjobIndex(indexNumber)}
+    >
       <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-4'>
           <Image
@@ -26,13 +42,11 @@ const JobCard = (props: Props) => {
             fugit at vitae? Ut, sequi cumque.
           </p>
           <div className='flex flex-row gap-2 flex-wrap'>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>Html</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>CSS</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>JavaScript</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>NodeJS</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>ReactJS</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>MongoDB</p>
-            <p className='bg-gray-100 p-2 text-xs rounded-md'>ExpressJS</p>
+            {technologies.map((item, index) => (
+              <p className='bg-gray-100 p-2 text-xs rounded-md' key={index}>
+                {item}
+              </p>
+            ))}
           </div>
         </div>
       </div>
