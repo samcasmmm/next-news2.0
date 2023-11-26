@@ -1,9 +1,11 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 type Props = {
-  setjobIndex: () => void;
+  indexNumber: number;
+  setjobIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 const technologies = [
   'Html',
@@ -15,11 +17,11 @@ const technologies = [
   'ExpressJS',
 ];
 
-const JobCard = ({ setjobIndex }: Props) => {
+const JobCard = ({ indexNumber, setjobIndex }: Props) => {
   return (
     <motion.div
       className='w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer'
-      onClick={() => setjobIndex()}
+      onClick={() => setjobIndex(indexNumber)}
     >
       <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-4'>
