@@ -59,7 +59,7 @@ const page = (props: Props) => {
             </div>
           </div>
           <div className='flex flex-col flex-1 bg-white p-4 rounded-xl'>
-            <JobDescription />
+            <JobDescription jobIndex={jobIndex}/>
           </div>
         </div>
       </div>
