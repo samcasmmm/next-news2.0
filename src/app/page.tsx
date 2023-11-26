@@ -3,14 +3,17 @@
 import { Button } from '@/components';
 import FilterSearch from '@/components/FilterSearch';
 import JobCard from '@/components/JobCard';
+import JobDescription from '@/components/JobDescription';
 import { useAppDispatch, useAppSelector } from '@/hooks/useAppState';
 import { filterStateFn } from '@/redux/features/ui.slice';
+import { useState } from 'react';
 
 type Props = {};
 
 const page = (props: Props) => {
   const dispatch = useAppDispatch();
   const UiState = useAppSelector((state) => state.uiState);
+  const [jobIndex, setjobIndex] = useState(0);
 
   return (
     <main className='w-full'>
@@ -47,13 +50,16 @@ const page = (props: Props) => {
             </div>
             <div className='flex flex-col gap-4 overflow-y-scroll max-h-[60vh] scroll-smooth  scrollbar-none'>
               {Array.from({ length: 10 }).map((item, index) => (
-                <JobCard key={index} />
+                <JobCard
+                  key={index}
+                  indexNumber={index}
+                  setjobIndex={setjobIndex}
+                />
               ))}
             </div>
           </div>
           <div className='flex flex-col flex-1 bg-white p-4 rounded-xl'>
-            <p className=''>Related Jobs</p>
-            <div className='flex flex-col gap-4'></div>
+            <JobDescription />
           </div>
         </div>
       </div>
