@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import React from 'react';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 type Props = {
   indexNumber: number;
@@ -19,12 +20,19 @@ const technologies = [
 ];
 
 const JobCard = ({ indexNumber, jobIndex, setjobIndex }: Props) => {
+  const WIDTH = useWindowWidth();
+
+  const handleJobDescriptions = () => {
+    setjobIndex(indexNumber);
+    if (WIDTH <= 767) {
+    }
+  };
   return (
     <motion.div
       className={`w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer ${
         jobIndex === indexNumber ? 'border-blue-600' : ''
       }`}
-      onClick={() => setjobIndex(indexNumber)}
+      onClick={handleJobDescriptions}
     >
       <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-4'>
@@ -35,7 +43,7 @@ const JobCard = ({ indexNumber, jobIndex, setjobIndex }: Props) => {
             height={50}
           />
           <div className='flex flex-col gap-1'>
-            <p className=''>Role/Position</p>
+            <p className=''>Role/Position {WIDTH}</p>
             <p className='text-xs'>Company Name</p>
           </div>
         </div>
