@@ -2,9 +2,12 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import React from 'react';
+import useWindowWidth from '@/hooks/useWindowWidth';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   indexNumber: number;
+  jobIndex: number;
   setjobIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 const technologies = [
@@ -17,11 +20,22 @@ const technologies = [
   'ExpressJS',
 ];
 
-const JobCard = ({ indexNumber, setjobIndex }: Props) => {
+const JobCard = ({ indexNumber, jobIndex, setjobIndex }: Props) => {
+  const WIDTH = useWindowWidth();
+  const router = useRouter();
+
+  const handleJobDescriptions = () => {
+    setjobIndex(indexNumber);
+    if (WIDTH <= 767) {
+      router.push(`/job/slug=${indexNumber}`);
+    }
+  };
   return (
     <motion.div
-      className='w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer'
-      onClick={() => setjobIndex(indexNumber)}
+      className={`w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer ${
+        jobIndex === indexNumber ? 'border-blue-600' : ''
+      }`}
+      onClick={handleJobDescriptions}
     >
       <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-4'>
@@ -32,7 +46,7 @@ const JobCard = ({ indexNumber, setjobIndex }: Props) => {
             height={50}
           />
           <div className='flex flex-col gap-1'>
-            <p className=''>Role/Position</p>
+            <p className=''>Role/Position {WIDTH}</p>
             <p className='text-xs'>Company Name</p>
           </div>
         </div>
