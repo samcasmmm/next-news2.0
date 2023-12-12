@@ -13,7 +13,7 @@ type Props = {};
 const page = (props: Props) => {
   const dispatch = useAppDispatch();
   const UiState = useAppSelector((state) => state.uiState);
-  const [jobIndex, setjobIndex] = useState(0);
+  const [jobIndex, setjobIndex] = useState<number>(0);
 
   return (
     <main className='w-full'>
@@ -53,13 +53,14 @@ const page = (props: Props) => {
                 <JobCard
                   key={index}
                   indexNumber={index}
+                  jobIndex={jobIndex}
                   setjobIndex={setjobIndex}
                 />
               ))}
             </div>
           </div>
           <div className='flex flex-col flex-1 bg-white p-4 rounded-xl'>
-            <JobDescription jobIndex={jobIndex}/>
+            <JobDescription jobIndex={jobIndex} />
           </div>
         </div>
       </div>

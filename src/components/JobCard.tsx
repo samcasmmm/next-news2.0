@@ -5,6 +5,7 @@ import React from 'react';
 
 type Props = {
   indexNumber: number;
+  jobIndex: number;
   setjobIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 const technologies = [
@@ -17,10 +18,12 @@ const technologies = [
   'ExpressJS',
 ];
 
-const JobCard = ({ indexNumber, setjobIndex }: Props) => {
+const JobCard = ({ indexNumber, jobIndex, setjobIndex }: Props) => {
   return (
     <motion.div
-      className='w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer'
+      className={`w-full bg-white p-4 rounded-lg hover:border-blue-600 border cursor-pointer ${
+        jobIndex === indexNumber ? 'border-blue-600' : ''
+      }`}
       onClick={() => setjobIndex(indexNumber)}
     >
       <div className='flex flex-col gap-2'>
