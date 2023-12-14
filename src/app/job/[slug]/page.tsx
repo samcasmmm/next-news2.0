@@ -11,8 +11,8 @@ type Props = {
 };
 
 const page = (props: Props) => {
-  console.log(props);
-  return <div>heyy {props.params.slug} </div>;
+  const SLUG = props?.params?.slug;
+  return <div>heyy {SLUG} </div>;
 };
 
 export default page;

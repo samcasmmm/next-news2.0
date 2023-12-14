@@ -48,7 +48,7 @@ const page = (props: Props) => {
                 {UiState?.filterState ? 'Hide Filter' : 'Show Filter'}
               </Button>
             </div>
-            <div className='flex flex-col gap-4 overflow-y-scroll max-h-[60vh] scroll-smooth  scrollbar-none'>
+            <div className='flex flex-col gap-4 overflow-y-scroll max-h-[55vh] scroll-smooth  scrollbar-none'>
               {Array.from({ length: 10 }).map((item, index) => (
                 <JobCard
                   key={index}
