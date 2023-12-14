@@ -3,13 +3,16 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-type Props = {};
+type Props = {
+  params: {
+    slug: number;
+  };
+  searchParams: {};
+};
 
 const page = (props: Props) => {
-  const router = useRouter();
-
-  console.log(router);
-  return <div>heyy </div>;
+  const SLUG = props?.params?.slug;
+  return <div>heyy {SLUG} </div>;
 };
 
 export default page;

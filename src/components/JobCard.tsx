@@ -27,7 +27,7 @@ const JobCard = ({ indexNumber, jobIndex, setjobIndex }: Props) => {
   const handleJobDescriptions = () => {
     setjobIndex(indexNumber);
     if (WIDTH <= 767) {
-      router.push(`/job/slug=${indexNumber}`);
+      router.push(`/job/${indexNumber}`);
     }
   };
   return (
