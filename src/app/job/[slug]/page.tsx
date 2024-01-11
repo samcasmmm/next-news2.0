@@ -14,7 +14,7 @@ const page = (props: Props) => {
   const SLUG = props?.params?.slug;
   return <div className='container'>
     <div className="">
-      
+      <div className="text-md">Heading</div>
     </div>
   </div>;
 };
