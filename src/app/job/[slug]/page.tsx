@@ -12,7 +12,11 @@ type Props = {
 
 const page = (props: Props) => {
   const SLUG = props?.params?.slug;
-  return <div className='container'>heyy {SLUG} </div>;
+  return <div className='container'>
+    <div className="">
+      
+    </div>
+  </div>;
 };
 
 export default page;
