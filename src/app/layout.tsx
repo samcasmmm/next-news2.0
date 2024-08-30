@@ -17,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider>
+      {/* <QueryClientProvider client={queryClient}> */}
       <html lang='en'>
         <body className={inter.className}>{children}</body>
       </html>
+      {/* </QueryClientProvider> */}
     </StoreProvider>
   );
 }
